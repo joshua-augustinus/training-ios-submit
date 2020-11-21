@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, Text, TextInput, TouchableOpacity, View, BackHandler } from 'react-native';
+import { Button, Text, TextInput, TouchableOpacity, View, BackHandler, Alert } from 'react-native';
 import { SafeAreaView, StackActions } from 'react-navigation';
 import { DrawerActions, NavigationDrawerProp } from 'react-navigation-drawer';
 import Icon from 'react-native-vector-icons/Entypo';
@@ -34,6 +34,10 @@ const MasterScreen = (props: Props) => {
         props.navigation.dispatch(pushAction);
     }
 
+    const onSubmit = () => {
+        Alert.alert("You submit");
+    }
+
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -47,7 +51,7 @@ const MasterScreen = (props: Props) => {
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Icon name="controller-play" size={24} />
                 <Text>{props.navigation.state.routeName}</Text>
-                <TextInput placeholder="Enter text here..."></TextInput>
+                <TextInput onSubmitEditing={onSubmit} placeholder="Enter text here..."></TextInput>
                 <Button title="Press me" onPress={() => onButtonPress()}></Button>
             </View>
         </SafeAreaView>
